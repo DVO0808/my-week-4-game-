@@ -131,32 +131,85 @@ $('.attackButton').click(function(){
 
 
 	enemyObject.attack  = enemyObject.attack;
-	heroObject.attack  =  heroObject.attack * (attack / 2);
+	heroObject.attack  =  heroObject.attack + (attack * 3);
 
 	enemyObject.healthPoints  = enemyObject.healthPoints - heroObject.attack;
 	heroObject.healthPoints  =  heroObject.healthPoints - enemyObject.attack;
-	console.log(enemyObject.healthPoints);
-	console.log(heroObject.healthPoints);
 
+
+
+	console.log("enemy hp is: " + enemyObject.healthPoints);
+	console.log("hero hp is: " + heroObject.healthPoints);
+	$("#userMessage").html("EnemyAttack: " + enemyObject.attack + " " + "HeroAttack: " + heroObject.attack);
+	$('#' + enemyObject.name).html("HealthPoint: " + enemyObject.healthPoints);
+	$('#' + heroObject.name).html("HealthPoint: " + heroObject.healthPoints);
 
 	if(enemyObject.healthPoints <= 0){
 		wins++;
 		enemiesDefeated++;
+		$("#userMessage").html("Wins: " + wins + " " + "---" + "Please select New Opponent From Enemies Still To Battle!");
 		console.log("number of wins: " + wins);
 		console.log("number of enemies defeated: " + enemiesDefeated);
 		$("#enemiesD").html("Enemies Defeated Area");
-		$('#' + enemyID).appendTo("#enemiesD");
+		$('#' + enemyID).appendTo("#eD");
+		$('#' + enemyObject.name).html("Defeated!");
 
-	}
-
+	
+	winFunction();
+}
+	
 	if(heroObject.healthPoints <= 0){
 		loss++;
 		console.log("you have lost");
+		$("#userMessage").html("You're A Loser Like Team Rocket! THAT MEANS GAME OVER");
 
 	}
-
-
 })
+
+
+function winFunction(){	
+
+	if (wins < 3){
+
+	enemy;
+	$("#attack").hide();
+
+	$('.pokeChar').click(function(){
+	if (hero && enemy){
+	
+	 return;
+	}
+
+	if (hero){
+		enemyID = this.id;
+		console.log(enemyID);
+		enemy = $(this).appendTo("#defend");
+		$(this).removeClass("active");
+		$("#eTB").html("Enemies Still To Battle");
+		$("#userMessage").html("Let the battle begin!");
+		$("#attack").show();
+		audioPlay();
+		
+		
+	}else {
+		heroID = this.id;
+		console.log(heroID);
+		hero = $(this).appendTo("#yourChar");
+		$(this).removeClass("active");
+		enemiesToBattle = $(".active").appendTo("#enemiesTB");
+		$("#userMessage").html("Choose an Opponent from Enemies To Battle");
+		
+	}
+	
+
+
+	})
+}
+
+}
+
+	
+
 
 function getCharacterById(id){
 
@@ -171,31 +224,7 @@ for (var i = 0; i < character.length; i++){
 
 }
 
-/*	enemyStatus -= heroAttack;
-	console.log("new enemy status is: " + enemyStatus);
-	console.log('heroStatus before subtraction', heroStatus);
-	heroStatus = heroStatus - enemyAttack;
-	// console.log('enemyAttack:', enemyAttack);
-	console.log("new hero status is: " + heroStatus);
 
-	if(enemyObject.healthPoints === 0){
-		wins++;
-		enemiesDefeated++;
-		console.log("number of wins: " + wins);
-		console.log("number of enemies defeated: " + enemiesDefeated);
-		$("#enemiesD").html("Enemies Defeated Area");
-		$('#' + enemyID).appendTo("#enemiesD");
-
-	}
-
-	if(heroObject.healthPoints === 0){
-		loss++;
-		console.log("you have lost");
-
-	}
-
-
-*/
 
 
 
