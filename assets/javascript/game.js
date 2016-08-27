@@ -175,12 +175,12 @@ function winFunction(){
 	$("#attack").hide();
 
 	$('.pokeChar').click(function(){
-	if (hero && enemy){
+	/*if (hero && enemy){
 	
 	 return;
 	}
 
-	if (hero){
+	if (hero){ */
 		enemyID = this.id;
 		console.log(enemyID);
 		enemy = $(this).appendTo("#defend");
@@ -190,7 +190,7 @@ function winFunction(){
 		$("#attack").show();
 		audioPlay();
 		
-		
+	/*	
 	}else {
 		heroID = this.id;
 		console.log(heroID);
@@ -200,7 +200,7 @@ function winFunction(){
 		$("#userMessage").html("Choose an Opponent from Enemies To Battle");
 		
 	}
-	
+	*/
 
 
 	})
