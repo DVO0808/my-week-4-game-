@@ -38,27 +38,27 @@ var character =[{
 
 	id: "pika",
 	name: "Pikachu",
-	healthPoints: 100,
+	healthPoints: 300,
 	attack: 10,
 	
 }, {
 
 	id: "char",
 	name: "Charizard", 
-	healthPoints: 150,
+	healthPoints: 450,
 	attack: 20,
 	
 },{
 
 	id: "mew",
 	name: "Mew", 
-	healthPoints: 200,
+	healthPoints: 600,
 	attack: 25,
 }, {
 
 	id: "mew2",
 	name: "MewTwo",
-	healthPoints: 250,
+	healthPoints: 650,
 	attack: 30,
 }]
 
@@ -130,8 +130,8 @@ $('.attackButton').click(function(){
 	console.log(heroObject);
 
 
-	enemyObject.attack  = enemyObject.attack;
-	heroObject.attack  =  heroObject.attack + (attack * 3);
+	enemyObject.attack  = enemyObject.attack + (attack * 2);
+	heroObject.attack  =  heroObject.attack + ((attack * 2) + (wins * 2));
 
 	enemyObject.healthPoints  = enemyObject.healthPoints - heroObject.attack;
 	heroObject.healthPoints  =  heroObject.healthPoints - enemyObject.attack;
@@ -158,29 +158,39 @@ $('.attackButton').click(function(){
 	winFunction();
 }
 	
-	if(heroObject.healthPoints <= 0){
+	if(heroObject.healthPoints <= 0 && wins < 3){
 		loss++;
 		console.log("you have lost");
 		$("#userMessage").html("You're A Loser Like Team Rocket! THAT MEANS GAME OVER");
+
+	loseFunction();
 
 	}
 })
 
 
 function winFunction(){	
+	if (wins >= 3){
 
-	if (wins < 3){
+	$("#eTB").hide();
+	$("#attack").hide();
+	$("#userMessage").html("Wins: " + wins + " " + "---" +  " " + "YOU'RE A WINNER! GO AND CATCH 'EM' ALL!");
 
-	enemy;
+		return;
+
+	}else {
+
+	enemy = "";
+
 	$("#attack").hide();
 
 	$('.pokeChar').click(function(){
-	/*if (hero && enemy){
+	if (hero && enemy){
 	
 	 return;
 	}
 
-	if (hero){ */
+	if (hero){ 
 		enemyID = this.id;
 		console.log(enemyID);
 		enemy = $(this).appendTo("#defend");
@@ -189,18 +199,8 @@ function winFunction(){
 		$("#userMessage").html("Let the battle begin!");
 		$("#attack").show();
 		audioPlay();
-		
-	/*	
-	}else {
-		heroID = this.id;
-		console.log(heroID);
-		hero = $(this).appendTo("#yourChar");
-		$(this).removeClass("active");
-		enemiesToBattle = $(".active").appendTo("#enemiesTB");
-		$("#userMessage").html("Choose an Opponent from Enemies To Battle");
-		
 	}
-	*/
+	
 
 
 	})
@@ -208,6 +208,13 @@ function winFunction(){
 
 }
 
+function loseFunction(){	
+	if (lose >= 1){
+		return;
+
+	}
+
+}
 	
 
 
