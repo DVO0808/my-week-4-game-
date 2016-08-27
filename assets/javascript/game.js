@@ -14,6 +14,28 @@ function audioPlay() {
             console.log("about to play Pokemon song");
 
             audioPlay();
+
+function audioPlay2() {
+                var audio = document.getElementById("player2");
+                if (audio.paused) {
+                    audio.play();
+                }else{
+                	audio.play();
+                }
+
+            }
+
+
+function audioPlay3() {
+                var audio = document.getElementById("player3");
+                if (audio.paused) {
+                    audio.play();
+                }else{
+                    audio.play();
+                }
+
+            }
+            
 /*I need an object for each character with a health point, attack points, and counter attack points for each as well as a function for what should happen when they are in different areas of the page*/
 var hero;
 var heroID;
@@ -119,6 +141,7 @@ $('.pokeChar').click(function(){
 })
 
 $('.attackButton').click(function(){
+	audioPlay2();
 
 	attack++;
 	console.log(attack);
@@ -156,14 +179,14 @@ $('.attackButton').click(function(){
 
 	
 	winFunction();
-}
-	
-	if(heroObject.healthPoints <= 0 && wins < 3){
+
+	}if(heroObject.healthPoints <= 0 && wins < 3){
 		loss++;
 		console.log("you have lost");
 		$("#userMessage").html("You're A Loser Like Team Rocket! THAT MEANS GAME OVER");
-
-	loseFunction();
+		$("#attack").hide();
+		audioPlay3();
+	return;
 
 	}
 })
@@ -175,7 +198,7 @@ function winFunction(){
 	$("#eTB").hide();
 	$("#attack").hide();
 	$("#userMessage").html("Wins: " + wins + " " + "---" +  " " + "YOU'RE A WINNER! GO AND CATCH 'EM' ALL!");
-
+	audioPlay();
 		return;
 
 	}else {
@@ -208,13 +231,7 @@ function winFunction(){
 
 }
 
-function loseFunction(){	
-	if (lose >= 1){
-		return;
 
-	}
-
-}
 	
 
 
